@@ -17,20 +17,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ProjectController {
     private final ProjectService projectService;
 
-    @RequestMapping(value = "/",method = RequestMethod.GET)
-    public String projectList(){
-        return "projects";
-    }
+
 
     @RequestMapping(value = "/{projectId}", method = RequestMethod.GET)
     public String getProject(@PathVariable("projectId") Long id){
-        return "project";
+        return "projects/project";
     }
 
     @RequestMapping("/new")
     public String newProject(Project project, Model model){
         model.addAttribute("project",new Project());
-        return "new-project";
+        return "projects/new-project";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -41,12 +38,12 @@ public class ProjectController {
 
     @RequestMapping(value = "/{projectId}", method = RequestMethod.POST)
     public String updateProject(@PathVariable("projectId") Long id){
-        return "project";
+        return "projects/project";
     }
 
     @RequestMapping(value = "/{projectId}", method = RequestMethod.DELETE)
     public String deleteProject(@PathVariable("projectId") Long id){
-        return "project";
+        return "projects/project";
     }
 
 }
