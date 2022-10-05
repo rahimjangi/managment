@@ -21,7 +21,8 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String email;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}
+    ,fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
     private Project project;
 

@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,6 +21,12 @@ public class EmployeeController {
     public String employeeList(Model model){
         model.addAttribute("employees",employeeService.findAll());
         return "employees/employee-list";
+    }
+
+    @RequestMapping(value = "/{employeeId}",method = RequestMethod.GET)
+    public String newEmployee(Model model, @PathVariable("employeeId") Long id){
+        model.addAttribute("employee",employeeService.findById(id));
+        return "employees/employee";
     }
 
     @RequestMapping(value = "/new",method = RequestMethod.GET)

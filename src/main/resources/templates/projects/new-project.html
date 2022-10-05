@@ -16,6 +16,11 @@
             <option th:value="COMPLETED">Completed</option>
         </select>
         <textarea placeholder="Enter Project Description" th:field="${project.description}"></textarea>
+        <select th:field="*{employees}" multiple="multiple" >
+            <option th:each="employee : ${allEmployees}"
+                    th:value="${employee.employeeId}"
+                    th:text="${employee.firstName +' '+ employee.lastName}"></option>
+        </select>
         <input type="submit" value="Create Project">
     </form>
 </div>
@@ -29,6 +34,7 @@
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Stage</th>
+            <th scope="col">Employees</th>
         </tr>
         </thead>
         <tbody>
@@ -37,6 +43,11 @@
             <td th:text="${project.name}">Mark</td>
             <td th:text="${project.description}">Otto</td>
             <td th:text="${project.stage}">@mdo</td>
+            <td>
+                <span th:each="employee : ${project.employees}" th:with="employeeId=${employee.employeeId}" >
+                    <a th:href="${'/employees/'+employeeId}" th:text="${employee.firstName +' '+ employee.lastName }"></a>
+                </span>
+            </td>
         </tr>
 
         </tbody>

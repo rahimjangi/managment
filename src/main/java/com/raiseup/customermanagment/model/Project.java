@@ -26,9 +26,4 @@ public class Project {
     @OneToMany(mappedBy = "project")
     private List<Employee> employees;
 
-    public Project(String name, String description, String stage) {
-        this.name = name;
-        this.description = description;
-        this.stage = stage;
-    }
 }

@@ -1,6 +1,7 @@
 package com.raiseup.customermanagment.service;
 
 import com.raiseup.customermanagment.model.Project;
+import com.raiseup.customermanagment.repository.EmployeeRepository;
 import com.raiseup.customermanagment.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,9 +12,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProjectService {
     private final ProjectRepository projectRepository;
+    private final EmployeeRepository employeeRepository;
 
-    public void save(Project project) {
+    public void save(Project project,List<Long>ids) {
+        for(int i=0;i<ids.size();i++){
+            employeeRepository.findById(ids.get(i)).get().setProject(project);
+        }
         projectRepository.save(project);
+
     }
 
     public List<Project> findAll() {

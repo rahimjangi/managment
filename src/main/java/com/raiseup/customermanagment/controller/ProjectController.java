@@ -1,6 +1,7 @@
 package com.raiseup.customermanagment.controller;
 
 import com.raiseup.customermanagment.model.Project;
+import com.raiseup.customermanagment.service.EmployeeService;
 import com.raiseup.customermanagment.service.ProjectService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/projects")
 public class ProjectController {
     private final ProjectService projectService;
+    private final EmployeeService employeeService;
 
 
 
@@ -28,12 +33,14 @@ public class ProjectController {
     public String newProject(Project project, Model model){
         model.addAttribute("project",new Project());
         model.addAttribute("projects",projectService.findAll());
+        model.addAttribute("allEmployees",employeeService.findAll());
         return "projects/new-project";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String createProject(Project project){
-        projectService.save(project);
+    public String createProject(Project project, @RequestParam List<Long> employees){
+
+        projectService.save(project,employees);
         return "redirect:/projects/new";
     }
 
