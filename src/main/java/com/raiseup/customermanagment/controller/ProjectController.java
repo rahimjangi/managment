@@ -27,6 +27,7 @@ public class ProjectController {
     @RequestMapping("/new")
     public String newProject(Project project, Model model){
         model.addAttribute("project",new Project());
+        model.addAttribute("projects",projectService.findAll());
         return "projects/new-project";
     }
 

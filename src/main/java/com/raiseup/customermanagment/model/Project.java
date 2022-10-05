@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Slf4j
 @Builder
@@ -22,6 +23,8 @@ public class Project {
     private String name;
     private String description;
     private String stage;
+    @OneToMany(mappedBy = "project")
+    private List<Employee> employees;
 
     public Project(String name, String description, String stage) {
         this.name = name;

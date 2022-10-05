@@ -25,6 +25,7 @@ public class EmployeeController {
     @RequestMapping(value = "/new",method = RequestMethod.GET)
     public String newEmployee(Model model, Employee employee){
         model.addAttribute("employee",new Employee());
+        model.addAttribute("employees",employeeService.findAll());
         return "employees/new-employee";
     }
 
