@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Projects</title>
     <link th:replace="layouts :: bootstrap">
+    <link th:replace="layouts :: appCss">
 </head>
 <body>
 <div th:replace="layouts :: navbar"></div>
@@ -39,7 +40,9 @@
         </thead>
         <tbody>
         <tr th:each="project:${projects}">
-            <th scope="row" th:text="${project.projectId}">1</th>
+            <th scope="row" th:with="projectId=${project.projectId}">
+                <span><a th:text="${project.projectId}" th:href="${'/projects/'+projectId}"></a></span>
+            </th>
             <td th:text="${project.name}">Mark</td>
             <td th:text="${project.description}">Otto</td>
             <td th:text="${project.stage}">@mdo</td>

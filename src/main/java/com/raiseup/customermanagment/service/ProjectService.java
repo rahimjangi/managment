@@ -16,7 +16,7 @@ public class ProjectService {
 
     public void save(Project project,List<Long>ids) {
         for(int i=0;i<ids.size();i++){
-            employeeRepository.findById(ids.get(i)).get().setProject(project);
+//            employeeRepository.findById(ids.get(i)).get().setProject(project);
         }
         projectRepository.save(project);
 
@@ -24,5 +24,9 @@ public class ProjectService {
 
     public List<Project> findAll() {
         return projectRepository.findAll();
+    }
+
+    public Project findById(Long id) {
+        return projectRepository.findById(id).orElse(new Project());
     }
 }

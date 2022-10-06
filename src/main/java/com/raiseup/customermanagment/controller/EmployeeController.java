@@ -2,6 +2,7 @@ package com.raiseup.customermanagment.controller;
 
 import com.raiseup.customermanagment.model.Employee;
 import com.raiseup.customermanagment.service.EmployeeService;
+import com.raiseup.customermanagment.service.ProjectService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/employees")
 public class EmployeeController {
     private final EmployeeService employeeService;
+    private final ProjectService projectService;
 
     @RequestMapping(value ={"","/"}, method = RequestMethod.GET)
     public String employeeList(Model model){
@@ -33,6 +35,7 @@ public class EmployeeController {
     public String newEmployee(Model model, Employee employee){
         model.addAttribute("employee",new Employee());
         model.addAttribute("employees",employeeService.findAll());
+        model.addAttribute("allProjects",projectService.findAll());
         return "employees/new-employee";
     }
 

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Employee</title>
     <link th:replace="layouts :: bootstrap">
+    <link th:replace="layouts :: appCss">
 </head>
 <body>
 <div th:replace="layouts :: navbar"></div>
@@ -12,11 +13,11 @@
         <h3 th:text="${employee.firstName}"></h3>
         <h3 th:text="${employee.lastName}"></h3>
         <h3 th:text="${employee.email}"></h3>
-        <h3 th:text="${'Project: '+employee.project.name}">
+        <h3>Projects:</h3>
+        <ul>
+            <li th:each="project:${employee.projects}" th:text="${project.name+' -> '+project.stage}"></li>
+        </ul>
 
-        </h3>
-        <h3></h3>
-        <h3></h3>
     </div>
 </body>
 </html>

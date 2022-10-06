@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>New Employee</title>
     <link th:replace="layouts :: bootstrap">
+    <link th:replace="layouts :: appCss">
 </head>
 <body>
 <div th:replace="layouts :: navbar"></div>
@@ -14,6 +15,10 @@
         <input type="text" placeholder="Last Name" th:field="${employee.lastName}">
         <input type="date" placeholder="Birth Date" th:field="${employee.birthDate}">
         <input type="text" placeholder="Email " th:field="${employee.email}">
+        <select multiple="multiple" th:field="${employee.projects}">
+            <option th:each="project: ${allProjects}" th:value="${project.projectId}"
+                    th:text="${project.name}"></option>
+        </select>
         <input type="submit" value="Create Employee">
     </form>
 </div>
@@ -27,14 +32,23 @@
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Email</th>
+            <th scope="col">Projects</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="employee:${employees}">
-            <th scope="row" th:text="${employee.employeeId}">1</th>
+            <th scope="row" th:with="employeeId=${employee.employeeId}">
+                <span><a th:text="${employee.employeeId}" th:href="${'/employees/'+employeeId}"></a></span>
+            </th>
             <td th:text="${employee.firstName}">Mark</td>
             <td th:text="${employee.lastName}">Otto</td>
             <td th:text="${employee.email}">@mdo</td>
+            <td >
+                    <span th:each="project:${employee.projects}" th:with="projectId=${project.projectId}">
+                    <a th:href="${'/projects/'+projectId}"
+                       th:text="${project.name }"></a>
+                </span>
+            </td>
         </tr>
 
         </tbody>

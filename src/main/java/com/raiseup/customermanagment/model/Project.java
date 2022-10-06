@@ -23,7 +23,10 @@ public class Project {
     private String name;
     private String description;
     private String stage;
-    @OneToMany(mappedBy = "project")
+    @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+    @JoinTable(name = "project_employee",
+    joinColumns = @JoinColumn(name = "project_id"),
+    inverseJoinColumns = @JoinColumn(name = "employee_id"))
     private List<Employee> employees;
 
 }
