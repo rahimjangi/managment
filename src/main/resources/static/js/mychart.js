@@ -1,30 +1,25 @@
-const DATA_COUNT = 3;
-const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
+new Chart(document.getElementById("projects"),{
+    type:'pie',
+    data:{
+        labels:["NOTSTARTED","INPROGRESS","FINISHED"],
+        datasets:[{
+            label:"Project Stage",
+            backgroundColor:["red","yellow","green"],
+            data:[1,10,20]
+        }]
+    },
+    options:{}
+});
 
-const data = {
-  labels: ['Red', 'Yellow', 'Green'],
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: Utils.numbers(NUMBER_CFG),
-      backgroundColor: Object.values(Utils.CHART_COLORS),
-    }
-  ]
-};
-
-const config = {
-  type: 'pie',
-  data: data,
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Project Stage'
-      }
-    }
-  },
-};
+new Chart(document.getElementById("employees"),{
+    type:'pie',
+    data:{
+        labels:["NOTSTARTED","INPROGRESS","FINISHED"],
+        datasets:[{
+            label:"Project Stage",
+            backgroundColor:["red","yellow","green"],
+            data:[1,10,20]
+        }]
+    },
+    options:{}
+});

@@ -11,52 +11,67 @@
 
 <div class="container">
     <h3>Project List:</h3>
-    <table class="table table-hover table-bordered border-primary table-striped">
-        <thead class="table-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Stage</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="project:${projects}">
-            <th scope="row" th:text="${project.projectId}">1</th>
-            <td th:text="${project.name}">Mark</td>
-            <td th:text="${project.description}">Otto</td>
-            <td th:text="${project.stage}">@mdo</td>
-        </tr>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-hover table-bordered border-primary table-striped">
+                <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Stage</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="project:${projects}">
+                    <th scope="row" th:text="${project.projectId}">1</th>
+                    <td th:text="${project.name}">Mark</td>
+                    <td th:text="${project.description}">Otto</td>
+                    <td th:text="${project.stage}">@mdo</td>
+                </tr>
 
-        </tbody>
-    </table>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <canvas id="projects" height="50" width="50"></canvas>
+        </div>
+    </div>
+
 </div>
 
 <div class="container">
-    <h3>Employee List:</h3>
-    <table class="table table-hover table-bordered border-primary table-striped">
-        <thead class="table-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Email</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="employee:${employees}">
-            <th scope="row" th:text="${employee.employeeId}">1</th>
-            <td th:text="${employee.firstName}">Mark</td>
-            <td th:text="${employee.lastName}">Otto</td>
-            <td th:text="${employee.email}">@mdo</td>
-        </tr>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Employee List:</h3>
+            <table class="table table-hover table-bordered border-primary table-striped">
+                <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="employee:${employees}">
+                    <th scope="row" th:text="${employee.employeeId}">1</th>
+                    <td th:text="${employee.firstName}">Mark</td>
+                    <td th:text="${employee.lastName}">Otto</td>
+                    <td th:text="${employee.email}">@mdo</td>
+                </tr>
 
-        </tbody>
-    </table>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <canvas id="employees" height="50" width="50"></canvas>
+        </div>
+    </div>
+
 </div>
-<div class="col-md-4">
-    <canvas id="myChart" height="50" width="50"></canvas>
-</div>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script type="text/javascript" th:src="@{/js/mychart.js}"></script>
 </body>
