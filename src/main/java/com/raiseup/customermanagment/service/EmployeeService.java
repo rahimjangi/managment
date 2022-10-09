@@ -1,5 +1,6 @@
 package com.raiseup.customermanagment.service;
 
+import com.raiseup.customermanagment.dto.EmployeeProject;
 import com.raiseup.customermanagment.model.Employee;
 import com.raiseup.customermanagment.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,5 +25,9 @@ public class EmployeeService {
 
     public Employee findById(Long id) {
         return employeeRepository.findById(id).orElse(new Employee());
+    }
+
+    public List<EmployeeProject> allEmployeeProject() {
+        return employeeRepository.employeeProjects();
     }
 }

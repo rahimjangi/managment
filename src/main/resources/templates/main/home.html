@@ -13,7 +13,7 @@
     <h3>Project List:</h3>
     <hr>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-7">
             <table class="table table-hover table-bordered border-primary table-striped">
                 <thead class="table-dark">
                 <tr>
@@ -34,7 +34,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <canvas id="projects" height="50" width="50"></canvas>
         </div>
     </div>
@@ -42,32 +42,33 @@
 </div>
 
 <div class="container">
+    <h3>Employee List:</h3>
+    <hr>
     <div class="row">
-        <div class="col-md-6">
-            <h3>Employee List:</h3>
+        <div class="col-md-7">
             <table class="table table-hover table-bordered border-primary table-striped">
                 <thead class="table-dark">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
-                    <th scope="col">Email</th>
+                    <th scope="col">#Projects</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="employee:${employees}">
+                <tr th:each="employee:${employeeProjects}">
                     <th scope="row" th:text="${employee.employeeId}">1</th>
                     <td th:text="${employee.firstName}">Mark</td>
                     <td th:text="${employee.lastName}">Otto</td>
-                    <td th:text="${employee.email}">@mdo</td>
+                    <td th:text="${employee.projectCount}">@mdo</td>
                 </tr>
 
                 </tbody>
             </table>
         </div>
-        <div class="col-md-4">
-            <canvas id="employees" height="50" width="50"></canvas>
-        </div>
+<!--        <div class="col-md-3">-->
+<!--            <canvas id="employees" height="50" width="50"></canvas>-->
+<!--        </div>-->
     </div>
 
 </div>

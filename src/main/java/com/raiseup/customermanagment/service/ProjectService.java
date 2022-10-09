@@ -1,5 +1,6 @@
 package com.raiseup.customermanagment.service;
 
+import com.raiseup.customermanagment.dto.ProjectStage;
 import com.raiseup.customermanagment.model.Project;
 import com.raiseup.customermanagment.repository.EmployeeRepository;
 import com.raiseup.customermanagment.repository.ProjectRepository;
@@ -28,5 +29,9 @@ public class ProjectService {
 
     public Project findById(Long id) {
         return projectRepository.findById(id).orElse(new Project());
+    }
+
+    public List<ProjectStage> getProjectStage() {
+        return projectRepository.getProjectStage();
     }
 }

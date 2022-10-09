@@ -21,6 +21,8 @@ public class HomeController {
     public String projectList(Model model){
         model.addAttribute("projects",projectService.findAll());
         model.addAttribute("employees",employeeService.findAll());
+        model.addAttribute("employeeProjects",employeeService.allEmployeeProject());
+        model.addAttribute("projectStage",projectService.getProjectStage());
         return "main/home";
     }
 
