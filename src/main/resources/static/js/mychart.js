@@ -1,25 +1,36 @@
+let chartDataStr= decodeHtml(chartData);
+console.log(chartData);
+
+console.log(JSON.parse(chartDataStr));
+let jsonData=JSON.parse(chartDataStr);
+const labels=[];
+for (let key in jsonData){
+    console.log(jsonData[key]['label']);
+    labels.push(jsonData[key]['label'])
+}
+
 new Chart(document.getElementById("projects"),{
     type:'pie',
     data:{
-        labels:["NOTSTARTED","INPROGRESS","FINISHED"],
+        labels:labels,
         datasets:[{
             label:"Project Stage",
             backgroundColor:["red","yellow","green"],
-            data:[1,10,20]
+            data:jsonData
         }]
     },
-    options:{}
+    options:{
+        title:{
+            display:true,
+            text:"Project Status"
+        }
+    }
 });
 
-new Chart(document.getElementById("employees"),{
-    type:'pie',
-    data:{
-        labels:["NOTSTARTED","INPROGRESS","FINISHED"],
-        datasets:[{
-            label:"Project Stage",
-            backgroundColor:["red","yellow","green"],
-            data:[1,10,20]
-        }]
-    },
-    options:{}
-});
+
+
+function decodeHtml(html){
+    let txt= document.createElement('textarea')
+    txt.innerHTML=html;
+    return txt.value;
+}

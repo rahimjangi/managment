@@ -1,6 +1,6 @@
 package com.raiseup.customermanagment.dto;
 
-public interface ProjectStage {
+public interface ChartData {
     public String getLabel();
-    public Integer getLabelCount();
+    public long getValue();
 }

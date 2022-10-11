@@ -1,19 +1,22 @@
 package com.raiseup.customermanagment.service;
 
-import com.raiseup.customermanagment.dto.ProjectStage;
+import com.raiseup.customermanagment.dto.ChartData;
 import com.raiseup.customermanagment.model.Project;
 import com.raiseup.customermanagment.repository.EmployeeRepository;
 import com.raiseup.customermanagment.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
 public class ProjectService {
     private final ProjectRepository projectRepository;
     private final EmployeeRepository employeeRepository;
+
 
     public void save(Project project,List<Long>ids) {
         for(int i=0;i<ids.size();i++){
@@ -31,7 +34,7 @@ public class ProjectService {
         return projectRepository.findById(id).orElse(new Project());
     }
 
-    public List<ProjectStage> getProjectStage() {
-        return projectRepository.getProjectStage();
+    public List<ChartData> getProjectStage() {
+        return projectRepository.getProjectStatus();
     }
 }
