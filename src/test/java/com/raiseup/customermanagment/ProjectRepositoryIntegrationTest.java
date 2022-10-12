@@ -3,12 +3,12 @@ package com.raiseup.customermanagment;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+
 @SpringBootTest
-//@AutoConfigureMockMvc
-class CustomerManagementApplicationTests {
+public class ProjectRepositoryIntegrationTest {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void loadContext(){
 
+    }
 }

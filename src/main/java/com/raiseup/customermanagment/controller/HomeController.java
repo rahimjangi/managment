@@ -7,6 +7,7 @@ import com.raiseup.customermanagment.service.EmployeeService;
 import com.raiseup.customermanagment.service.ProjectService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,12 +22,16 @@ import java.util.Map;
 @RequiredArgsConstructor
 @RequestMapping("/")
 public class HomeController {
+
+    @Value("${spring.application.name}")
+    private String applicationName;
     private final ProjectService projectService;
     private final EmployeeService employeeService;
     Map<String, Object> map= new HashMap<>();
 
     @RequestMapping(value = "",method = RequestMethod.GET)
     public String projectList(Model model) throws JsonProcessingException {
+        model.addAttribute("applicationName",applicationName);
         model.addAttribute("projects",projectService.findAll());
         model.addAttribute("employees",employeeService.findAll());
         model.addAttribute("employeeProjects",employeeService.allEmployeeProject());

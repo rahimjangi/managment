@@ -17,7 +17,7 @@ import java.util.List;
 @Entity
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "employee_seq")
     private Long employeeId;
     private String firstName;
     private String lastName;
